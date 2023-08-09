@@ -21,7 +21,7 @@ function App() {
             <RecipeReducerProvider>
               <Routes>
                 <Route element={<PersistUserSession />}>
-                  <Route index element={<Home />} />
+                  <Route index path="/" element={<Home />} />
                   <Route element={<RequireAuth />}>
                     <Route path="/myrecipes" element={<Dashboard />}>
                       <Route path="create" element={<RecipeForm />} />
