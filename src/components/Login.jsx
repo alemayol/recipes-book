@@ -11,7 +11,16 @@ const Login = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/myrecipes";
+  let from;
+
+  if (
+    !location.state.from.pathname ||
+    location.state.from.pathname == "/login"
+  ) {
+    from = "/myrecipes";
+  } else {
+    from = location - state.from.pathname;
+  }
 
   const toastRef = useRef();
   const errRef = useRef();
@@ -78,7 +87,7 @@ const Login = () => {
             Accept: "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
 
       if (!response.data.ok || response.data.message === "Failed to fetch") {
