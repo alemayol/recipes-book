@@ -14,12 +14,12 @@ const Login = () => {
   let from;
 
   if (
-    !location.state.from.pathname ||
+    location.state?.from.pathname == null ||
     location.state.from.pathname == "/login"
   ) {
     from = "/myrecipes";
   } else {
-    from = location - state.from.pathname;
+    from = location.state.from.pathname;
   }
 
   const toastRef = useRef();
@@ -122,16 +122,13 @@ const Login = () => {
     <section className="wrapper login | padding-block-700">
       {location.state?.message ? (
         <div className="notifications">
-          <div
-            className={`toast ${isError ? "error" : "error"}`}
-            ref={toastRef}
-          >
+          <div className={`toast ${isError ? "error" : ""}`} ref={toastRef}>
             {isError ? (
               <IconX className="toast-check error" color="#000" size={"24px"} />
             ) : (
               <IconCheck className="toast-check" color="#000" size={"24px"} />
             )}
-            <div className={isError ? "toast-message error" : "toast-message"}>
+            <div className={`toast-message ${isError ? "error" : ""}`}>
               <span className="toast-message__status">
                 {isError ? "Failed" : "Success"}
               </span>
@@ -141,7 +138,7 @@ const Login = () => {
             </div>
             <IconX
               className="toast-close"
-              color="#000"
+              color="#333333"
               size={"16px"}
               onClick={() => toastRef.current.classList.remove("active")}
             />

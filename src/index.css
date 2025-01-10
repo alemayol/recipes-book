@@ -744,7 +744,7 @@ input[type="file"] {
   gap: var(--size-200);
   border-radius: var(--size-200);
   border-left: 6px solid var(--clr-success);
-  background: var(--clr-success);
+  background: var(--clr-background);
   box-shadow: 0.3em 0.5em 0.5em -8px var(--box-shadow);
   z-index: 960;
   transform: translateX(calc(100% + 20px));

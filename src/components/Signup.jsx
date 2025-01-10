@@ -127,7 +127,7 @@ const Signup = () => {
             Accept: "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
 
       if (!response.data.ok) throw response;
@@ -142,6 +142,7 @@ const Signup = () => {
           from: location,
           message: "Your account has been created",
           newUser: true,
+          error: false,
         },
       });
     } catch (err) {
@@ -152,8 +153,8 @@ const Signup = () => {
       if (err.response.status === 409) {
         setErrMsg(
           `${err.response.data.duplicates.map(
-            (dup) => `${dup.charAt(0).toUpperCase() + dup.slice(1)} `
-          )}taken`
+            (dup) => `${dup.charAt(0).toUpperCase() + dup.slice(1)} `,
+          )}taken`,
         );
         return errRef.current.focus();
       }
@@ -207,11 +208,10 @@ const Signup = () => {
           </div>
           <p
             id="uidnote"
-            className={`input-error ${
-              usernameFocus && username && !validUsername
+            className={`input-error ${usernameFocus && username && !validUsername
                 ? "err-visible"
                 : "offscreen"
-            }`}
+              }`}
           >
             <IconAlertCircleFilled />4 to 32 characters.
             <br />
@@ -246,9 +246,8 @@ const Signup = () => {
           </div>
           <p
             id="emailnote"
-            className={`input-error ${
-              emailFocus && email && !validEmail ? "err-visible" : "offscreen"
-            }`}
+            className={`input-error ${emailFocus && email && !validEmail ? "err-visible" : "offscreen"
+              }`}
           >
             <IconAlertCircleFilled />
             Please provide a valid email.
@@ -285,9 +284,8 @@ const Signup = () => {
           </div>
           <p
             id="pwdnote"
-            className={`input-error ${
-              pwdFocus && password && !validPwd ? "err-visible" : "offscreen"
-            }`}
+            className={`input-error ${pwdFocus && password && !validPwd ? "err-visible" : "offscreen"
+              }`}
           >
             <IconAlertCircleFilled />
             <small>
@@ -337,9 +335,8 @@ const Signup = () => {
           </div>
           <p
             id="matchnote"
-            className={`input-error ${
-              matchFocus && !validMatch ? "err-visible" : "offscreen"
-            }`}
+            className={`input-error ${matchFocus && !validMatch ? "err-visible" : "offscreen"
+              }`}
           >
             <IconAlertCircleFilled />
             Both passwords must match
@@ -347,11 +344,10 @@ const Signup = () => {
           {!loader ? (
             <button
               type="submit"
-              className={`form-btn ${
-                !validEmail || !validMatch || !validPwd || !validUsername
+              className={`form-btn ${!validEmail || !validMatch || !validPwd || !validUsername
                   ? "not-allowed"
                   : "pointer"
-              }`}
+                }`}
             >
               Sign up
             </button>
