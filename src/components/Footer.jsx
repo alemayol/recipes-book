@@ -9,7 +9,7 @@ const Footer = () => {
             <ul role="list" className="social-list">
               <li role="listitem">
                 <a
-                  href="https://linkedin.com/in/alejandro-mayol-824a16287"
+                  href="https://www.linkedin.com/in/alemayol"
                   target="_blank"
                   rel="noreferrer"
                 >
