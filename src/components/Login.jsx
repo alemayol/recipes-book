@@ -11,16 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  let from;
-
-  if (
-    location.state?.from.pathname == null ||
-    location.state.from.pathname == "/login"
-  ) {
-    from = "/myrecipes";
-  } else {
-    from = location.state.from.pathname;
-  }
+  let from = "/myrecipes";
 
   const toastRef = useRef();
   const errRef = useRef();
